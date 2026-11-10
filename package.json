@@ -1,0 +1,18 @@
+{
+  "name": "sitio-web-gap",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "bootstrap:chino": "node scripts/bootstrap-admin.mjs",
+    "build:netlify": "node scripts/build-netlify.mjs",
+    "check": "node --check scripts/bootstrap-admin.mjs && node --check scripts/build-netlify.mjs && node --check netlify/functions/api.mjs && node --check api/events.js && node --check api/auth/login.js && node --check api/auth/session.js && node --check api/auth/logout.js && node --check api/auth/change-password.js && node --check api/gestion/events.js && node --check api/gestion/event.js && node --check api/gestion/upload.js && node --check api/gestion/reorder.js && node --check api/gestion/gallery.js && node --check agenda.js && node --check agenda-page.js && node --check evento-page.js && node --check chino.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.119.0",
+    "bcryptjs": "^3.0.3",
+    "busboy": "^1.6.0",
+    "dotenv": "^16.6.1"
+  }
+}

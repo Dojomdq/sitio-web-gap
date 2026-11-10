@@ -1,2 +1,7 @@
 .vercel
+.netlify
 .env*
+!.env.example
+node_modules/
+/dist/
+supabase/.temp/

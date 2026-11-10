@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101010"><meta name="robots" content="noindex,nofollow"><title>Gestión GAP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--orange:#ff680a;--bg:#101010;--panel:#181818;--ink:#f6f3ee;--muted:#9c9c9c;--line:#ffffff25;--danger:#e25243;--green:#74c69d}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',Arial,sans-serif}.wrap{width:min(1180px,calc(100% - 38px));margin:auto}button,input,textarea,select{font:inherit}button,a{touch-action:manipulation}a{color:inherit;text-decoration:none}button{cursor:pointer}.top{height:78px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.brand{display:block;width:108px;line-height:0}.brand img{display:block;width:100%;height:auto}.top-right{display:flex;align-items:center;gap:18px}.public-link,.link-button{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#aaa;font-weight:700}.public-link:hover,.link-button:hover{color:var(--orange)}.btn{border:1px solid var(--orange);background:var(--orange);color:#111;padding:13px 18px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;transition:transform .2s,background .2s}.btn:hover{transform:translateY(-2px);background:#ff7e30}.btn.secondary{background:transparent;color:var(--ink);border-color:var(--line)}.btn.danger{background:transparent;border-color:#a5483d;color:#ffaaa0}.btn:disabled{opacity:.55;cursor:wait;transform:none}.screen{display:none}.screen.active{display:block}.login-wrap{min-height:calc(100vh - 78px);display:grid;place-items:center;padding:40px 0}.login-card{width:min(420px,100%);border:1px solid var(--line);background:var(--panel);padding:34px}.eyebrow{color:var(--orange);font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700}.login-card h1{font:italic 900 56px/.9 'Barlow Condensed',Impact,sans-serif;margin:15px 0 9px}.subtle{color:var(--muted);font-size:13px;line-height:1.6}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}.field{display:grid;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#bbb;font-weight:700}.field input,.field textarea,.field select{width:100%;background:#101010;border:1px solid #ffffff35;color:var(--ink);padding:12px 13px;outline:none;min-height:44px}.field textarea{min-height:110px;resize:vertical;line-height:1.55}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--orange)}.field input[type=file]{padding:9px;font-size:12px}.field input[type=checkbox]{width:18px;height:18px;min-height:0;accent-color:var(--orange)}.help{font-size:11px;color:#888;line-height:1.5}.message{min-height:22px;color:#ffc18d;font-size:12px;line-height:1.5;margin:12px 0}.message.error{color:#ff9789}.message.ok{color:var(--green)}.login-card .btn{width:100%;margin-top:12px}.dashboard{padding:46px 0 90px}.page-head{display:flex;justify-content:space-between;align-items:end;gap:22px;margin-bottom:32px}.page-head h1{font:italic 900 clamp(56px,8vw,92px)/.88 'Barlow Condensed',Impact,sans-serif;margin:8px 0 0}.page-head p{color:var(--muted);font-size:13px;margin:10px 0 0}.head-actions{display:flex;gap:10px;flex-wrap:wrap}.toolbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:13px 0;display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:18px}.toolbar label{display:flex;align-items:center;gap:10px;color:#aaa;font-size:11px;text-transform:uppercase;letter-spacing:.1em}.toolbar select{background:#151515;color:var(--ink);border:1px solid var(--line);padding:9px}.event-list{display:grid;gap:10px}.event-row{display:grid;grid-template-columns:74px minmax(0,1fr) auto;align-items:center;gap:15px;padding:14px;border:1px solid var(--line);background:#151515}.event-thumb{width:74px;height:74px;object-fit:cover;background:#272727}.event-copy{min-width:0}.event-copy h2{font:italic 800 27px/.95 'Barlow Condensed',Impact,sans-serif;margin:0 0 7px;overflow-wrap:anywhere}.event-copy p{color:#aaa;font-size:12px;margin:0;line-height:1.5}.badges{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}.badge{padding:4px 7px;background:#292929;color:#ddd;font-size:9px;letter-spacing:.08em;text-transform:uppercase}.badge.published{background:#173529;color:#9be0b9}.badge.draft{background:#3b3021;color:#f4ca8b}.badge.hidden{background:#392323;color:#efaaa2}.row-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:end}.row-actions button{border:1px solid var(--line);background:transparent;color:#ddd;padding:8px 9px;font-size:10px}.row-actions button:hover{border-color:var(--orange);color:var(--orange)}.row-actions button:disabled{opacity:.35;cursor:not-allowed}.empty-state{border:1px dashed #ffffff35;padding:32px;color:#aaa;text-align:center;line-height:1.7}.editor{border:1px solid var(--line);background:#151515;padding:24px;margin:24px 0}.editor-head{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:4px}.editor-head h2{font:italic 800 42px/.9 'Barlow Condensed',Impact,sans-serif;margin:0}.editor-section{border-top:1px solid var(--line);padding:22px 0 5px;margin-top:18px}.editor-section h3{font:italic 700 26px/.95 'Barlow Condensed',Impact,sans-serif;margin:0 0 14px;color:var(--orange)}.editor-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:20px}.image-list{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.image-item{position:relative;width:90px}.image-item img{width:90px;height:90px;object-fit:cover;display:block;background:#282828}.image-item button{width:100%;margin-top:5px;border:1px solid #734139;background:transparent;color:#ffaaa0;font-size:10px;padding:6px}.password-box{border-top:1px solid var(--line);margin-top:38px;padding-top:25px}.password-box h2{font:italic 800 34px/.95 'Barlow Condensed',Impact,sans-serif;margin:0 0 8px}.password-form{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;gap:10px;align-items:end;margin-top:16px}.password-form input{width:100%;background:#101010;border:1px solid #ffffff35;color:var(--ink);padding:11px}.footer{border-top:1px solid var(--line);padding:20px 0 30px;color:#777;font-size:10px;display:flex;justify-content:space-between}.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}@media(max-width:850px){.event-row{grid-template-columns:60px minmax(0,1fr)}.event-thumb{width:60px;height:60px}.row-actions{grid-column:1/-1;justify-content:start}.password-form{grid-template-columns:1fr 1fr}.password-form .btn{grid-column:1/-1}}@media(max-width:600px){.top{height:68px}.brand{font-size:36px}.top-right{gap:10px}.top-right .public-link{display:none}.login-wrap{min-height:calc(100vh - 68px)}.login-card{padding:24px}.dashboard{padding-top:32px}.page-head{display:block}.head-actions{margin-top:18px}.toolbar{align-items:flex-start;flex-direction:column}.event-row{padding:10px;gap:10px}.event-copy h2{font-size:23px}.row-actions button{padding:9px}.editor{padding:16px}.form-grid{grid-template-columns:1fr;gap:13px}.field.full{grid-column:auto}.password-form{grid-template-columns:1fr}.password-form .btn{grid-column:auto}.footer{display:block}.footer span{display:block;margin-top:6px}}
+  </style>
+  <style>
+    .dashboard-footer{display:flex;justify-content:flex-end;border-top:1px solid var(--line);margin-top:34px;padding-top:12px}
+    .password-link{font-size:10px;letter-spacing:.08em;color:#888;padding:6px 0}
+    .password-link:hover{color:var(--orange)}
+    .password-dialog{width:min(460px,calc(100% - 32px));border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:24px}
+    .password-dialog::backdrop{background:#000b;backdrop-filter:blur(3px)}
+    .password-dialog-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .password-dialog-head h2{font:italic 800 34px/.95 'Barlow Condensed',Impact,sans-serif;margin:0}
+    .password-dialog form{display:grid;gap:14px;margin-top:20px}
+    .password-dialog-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:6px}
+    @media(max-width:600px){.password-dialog{padding:18px}}
+  </style>
+  <style>[hidden]{display:none!important}</style>
+</head>
+<body>
+  <header class="top wrap">
+    <a class="brand" href="/" aria-label="GAP, inicio"><img src="/assets/gap-logo.png" alt="GAP"></a>
+    <div class="top-right"><a class="public-link" href="/" target="_blank" rel="noopener">VER SITIO ↗</a><button id="logout-button" class="link-button" type="button" hidden>CERRAR SESIÓN</button></div>
+  </header>
+  <main class="wrap">
+    <section id="login-screen" class="screen login-wrap active" aria-labelledby="login-title">
+      <form id="login-form" class="login-card">
+        <div class="eyebrow">GESTIÓN GAP</div><h1 id="login-title">INGRESO<br>PRIVADO.</h1>
+        <p class="subtle">Ingresá con tu usuario para gestionar la agenda de eventos.</p>
+        <div class="form-grid">
+          <div class="field full"><label for="login-username">Usuario</label><input id="login-username" name="username" autocomplete="username" required maxlength="80"></div>
+          <div class="field full"><label for="login-password">Contraseña</label><input id="login-password" name="password" type="password" autocomplete="current-password" required maxlength="200"></div>
+        </div>
+        <p id="login-message" class="message" aria-live="polite"></p><button class="btn" type="submit">INGRESAR</button>
+      </form>
+    </section>
+
+    <section id="dashboard-screen" class="screen dashboard" aria-labelledby="dashboard-title" hidden>
+      <div class="page-head">
+        <div><div class="eyebrow">GAP · MAR DEL PLATA</div><h1 id="dashboard-title">AGENDA DE EVENTOS.</h1><p id="welcome-text">Gestioná fechas, entradas e imágenes.</p></div>
+        <div class="head-actions"><button id="new-event-button" class="btn" type="button">+ NUEVO EVENTO</button></div>
+      </div>
+      <div class="toolbar"><span id="event-count" class="subtle">Eventos</span><label for="event-filter">Mostrar<select id="event-filter"><option value="all">Todos</option><option value="published">Publicados</option><option value="draft">Borradores</option><option value="hidden">Ocultos</option></select></label></div>
+      <div id="dashboard-message" class="message" aria-live="polite"></div>
+      <div id="event-list" class="event-list"><p class="empty-state">Cargando eventos…</p></div>
+
+      <section id="event-editor" class="editor" hidden aria-labelledby="editor-title">
+        <div class="editor-head"><h2 id="editor-title">NUEVO EVENTO</h2><button id="close-editor" class="btn secondary" type="button">CERRAR</button></div>
+        <form id="event-form">
+          <input type="hidden" id="event-id"><input type="hidden" id="main-image-path">
+          <div class="editor-section"><h3>Información general</h3><div class="form-grid">
+            <div class="field"><label for="event-title">Nombre del evento</label><input id="event-title" required maxlength="160"></div>
+            <div class="field"><label for="event-artist">Artista / responsable</label><input id="event-artist" required maxlength="160"></div>
+            <div class="field"><label for="event-category">Categoría</label><input id="event-category" required maxlength="80" placeholder="Show, recital, fiesta…"></div>
+            <div class="field"><label for="event-order">Orden dentro de la misma fecha</label><input id="event-order" type="number" min="0" max="100000" value="0"></div>
+            <div class="field full"><label for="event-short">Descripción breve</label><textarea id="event-short" required maxlength="360" rows="2"></textarea></div>
+            <div class="field full"><label for="event-description">Descripción completa</label><textarea id="event-description" required maxlength="10000" rows="5"></textarea></div>
+          </div></div>
+          <div class="editor-section"><h3>Fecha y horarios</h3><div class="form-grid">
+            <div class="field"><label for="event-date">Fecha del evento</label><input id="event-date" type="date" required></div>
+            <div class="field"><label for="event-start">Inicio del espectáculo</label><input id="event-start" type="time" required></div>
+            <div class="field"><label for="event-doors">Apertura de puertas</label><input id="event-doors" type="time"></div>
+            <div class="field"><label for="event-end">Finalización (opcional)</label><input id="event-end" type="time"></div>
+            <p class="help field full">Los horarios se guardan y muestran en hora local de Argentina.</p>
+          </div></div>
+          <div class="editor-section"><h3>Espacio</h3><div class="form-grid">
+            <div class="field"><label for="event-venue">Nombre del espacio</label><input id="event-venue" required maxlength="160" value="GAP"></div>
+            <div class="field"><label for="event-address">Dirección</label><input id="event-address" required maxlength="240" value="Av. Constitución 5780, Mar del Plata"></div>
+            <div class="field full"><label for="event-visitor-info">Información adicional</label><textarea id="event-visitor-info" maxlength="1200" rows="2"></textarea></div>
+          </div></div>
+          <div class="editor-section"><h3>Entradas</h3><div class="form-grid">
+            <div class="field"><label for="ticket-url">URL de compra (HTTPS)</label><input id="ticket-url" type="url" maxlength="2048" placeholder="https://"></div>
+            <div class="field"><label for="ticket-provider">Ticketera</label><input id="ticket-provider" maxlength="120"></div>
+            <div class="field"><label for="ticket-button">Texto del botón</label><input id="ticket-button" maxlength="60" value="COMPRAR ENTRADAS"></div>
+            <div class="field"><label for="ticket-status">Estado de venta</label><select id="ticket-status"><option value="coming_soon">Próximamente</option><option value="available">Disponible</option><option value="sold_out">Agotado</option></select></div>
+          </div></div>
+          <div class="editor-section"><h3>Publicación</h3><div class="form-grid">
+            <div class="field"><label for="publication-status">Visibilidad</label><select id="publication-status"><option value="draft">Borrador</option><option value="published">Publicado</option><option value="hidden">Oculto</option></select></div>
+          </div></div>
+          <div class="editor-section"><h3>Imágenes</h3><div class="form-grid">
+            <div class="field"><label for="main-image">Imagen principal</label><input id="main-image" type="file" accept="image/jpeg,image/png,image/webp"><span class="help">JPG, PNG o WebP. Se optimiza en el navegador; máximo 3 MB por archivo.</span><div id="main-image-current" class="image-list"></div></div>
+            <div class="field"><label for="gallery-images">Galería adicional</label><input id="gallery-images" type="file" accept="image/jpeg,image/png,image/webp" multiple><span class="help">Podés subir varias imágenes; se optimizan y guardan por separado.</span><div id="gallery-current" class="image-list"></div></div>
+          </div></div>
+          <div class="editor-actions"><p id="form-message" class="message" aria-live="polite"></p><button id="save-event" class="btn" type="submit">GUARDAR EVENTO</button></div>
+        </form>
+      </section>
+
+      <div class="dashboard-footer"><button id="open-password-dialog" class="link-button password-link" type="button">CAMBIAR CONTRASEÑA</button></div>
+
+    </section>
+  </main>
+  <dialog id="password-dialog" class="password-dialog" aria-labelledby="password-title">
+    <div class="password-dialog-head"><h2 id="password-title">CAMBIAR CONTRASEÑA</h2><button id="close-password-dialog" class="btn secondary" type="button">CERRAR</button></div>
+    <p class="subtle">Confirmá la contraseña actual y elegí una nueva.</p>
+    <form id="password-form">
+      <div class="field"><label for="current-password">Contraseña actual</label><input id="current-password" type="password" autocomplete="current-password" required></div>
+      <div class="field"><label for="new-password">Nueva (12+ caracteres)</label><input id="new-password" type="password" autocomplete="new-password" required minlength="12"></div>
+      <div class="field"><label for="confirm-password">Repetir nueva</label><input id="confirm-password" type="password" autocomplete="new-password" required minlength="12"></div>
+      <p id="password-message" class="message" aria-live="polite"></p>
+      <div class="password-dialog-actions"><button class="btn" type="submit">ACTUALIZAR</button></div>
+    </form>
+  </dialog>
+  <footer class="footer wrap"><span>GAP · GESTIÓN PRIVADA</span><span>Sesión protegida · Vencimiento automático</span></footer>
+  <script type="module" src="/chino.js"></script>
+</body>
+</html>
