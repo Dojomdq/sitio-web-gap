@@ -9,6 +9,8 @@ import manageEvent from '../../api/gestion/event.js';
 import uploadImage from '../../api/gestion/upload.js';
 import reorderEvents from '../../api/gestion/reorder.js';
 import manageGalleryImage from '../../api/gestion/gallery.js';
+import managePresentation from '../../api/gestion/presentation.js';
+import publicPresentation from '../../api/presentation.js';
 
 const handlers = new Map([
   ['/api/events', publicEvents],
@@ -21,6 +23,8 @@ const handlers = new Map([
   ['/api/gestion/upload', uploadImage],
   ['/api/gestion/reorder', reorderEvents],
   ['/api/gestion/gallery', manageGalleryImage],
+  ['/api/gestion/presentation', managePresentation],
+  ['/api/presentation', publicPresentation],
 ]);
 
 function requestUrl(event, headers) {

@@ -7,6 +7,7 @@ const list = $('#event-list');
 const passwordDialog = $('#password-dialog');
 const TIME_ZONE = 'America/Argentina/Buenos_Aires';
 let events = [];
+let coverImages = [];
 let saving = false;
 
 function message(element, text = '', type = '') {
@@ -130,6 +131,83 @@ async function loadEvents() {
     list.replaceChildren(node('p', 'empty-state', 'No pudimos cargar los eventos. Recargá la página para volver a intentar.'));
   }
 }
+
+function renderCoverImages() {
+  const host = $('#presentation-list');
+  $('#presentation-count').textContent = `${coverImages.length} de 3 fotos cargadas · el orden se refleja en la portada.`;
+  if (!coverImages.length) {
+    host.replaceChildren(node('p', 'empty-state', 'Todavía no hay fotos de portada. Agregá una para mostrarla en “En vivo”.'));
+    return;
+  }
+  const fragment = document.createDocumentFragment();
+  coverImages.forEach((photo, index) => {
+    const card = node('article', 'presentation-card');
+    const img = node('img'); img.src = photo.url; img.alt = `Foto de portada ${index + 1}`; img.loading = 'lazy';
+    const controls = node('div', 'presentation-controls');
+    const up = node('button', 'btn secondary', '↑'); up.type = 'button'; up.title = 'Mover hacia arriba'; up.setAttribute('aria-label', `Mover foto ${index + 1} hacia arriba`); up.disabled = index === 0;
+    up.addEventListener('click', () => reorderCoverImage(index, index - 1));
+    const down = node('button', 'btn secondary', '↓'); down.type = 'button'; down.title = 'Mover hacia abajo'; down.setAttribute('aria-label', `Mover foto ${index + 1} hacia abajo`); down.disabled = index === coverImages.length - 1;
+    down.addEventListener('click', () => reorderCoverImage(index, index + 1));
+    const remove = node('button', 'btn danger', 'Quitar'); remove.type = 'button'; remove.addEventListener('click', () => removeCoverImage(photo));
+    controls.append(up, down, remove);
+    card.append(img, node('span', 'help', `Foto ${index + 1}`), controls);
+    fragment.append(card);
+  });
+  host.replaceChildren(fragment);
+}
+
+async function loadCoverImages() {
+  try {
+    const data = await api('/api/gestion/presentation');
+    coverImages = data.images || [];
+    renderCoverImages();
+  } catch (error) {
+    message($('#presentation-message'), error.message, 'error');
+    $('#presentation-count').textContent = 'No pudimos cargar las fotos.';
+  }
+}
+
+async function reorderCoverImage(from, to) {
+  if (to < 0 || to >= coverImages.length) return;
+  const next = [...coverImages];
+  [next[from], next[to]] = [next[to], next[from]];
+  try {
+    const result = await api('/api/gestion/presentation', { method: 'PUT', body: JSON.stringify({ images: next.map((image) => image.path) }) });
+    coverImages = result.images || next;
+    renderCoverImages();
+    message($('#presentation-message'), 'Orden actualizado. La portada se verá así.', 'ok');
+  } catch (error) { message($('#presentation-message'), error.message, 'error'); }
+}
+
+async function removeCoverImage(photo) {
+  if (!window.confirm('¿Quitar esta foto de la portada?')) return;
+  try {
+    const result = await api('/api/gestion/presentation', { method: 'DELETE', body: JSON.stringify({ path: photo.path }) });
+    coverImages = result.images || [];
+    renderCoverImages();
+    message($('#presentation-message'), 'Foto quitada de la portada.', 'ok');
+  } catch (error) { message($('#presentation-message'), error.message, 'error'); }
+}
+
+$('#presentation-form').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const file = $('#presentation-files').files[0];
+  if (!file) return;
+  const button = $('#presentation-upload-button');
+  button.disabled = true;
+  message($('#presentation-message'), 'Optimizando y subiendo foto…');
+  try {
+    const optimized = await optimizeImage(file);
+    const form = new FormData();
+    form.append('image', optimized, optimized.name);
+    const result = await api('/api/gestion/presentation', { method: 'POST', body: form });
+    coverImages = result.images || [];
+    $('#presentation-form').reset();
+    renderCoverImages();
+    message($('#presentation-message'), 'Foto agregada. La portada se actualizó.', 'ok');
+  } catch (error) { message($('#presentation-message'), error.message, 'error'); }
+  finally { button.disabled = false; }
+});
 
 function setFormValue(id, value) { $(`#${id}`).value = value ?? ''; }
 
@@ -288,6 +366,7 @@ async function saveEvent(event) {
     $('#gallery-images').value = '';
     message($('#form-message'), 'Evento guardado. La agenda pública se actualizó.', 'ok');
     await loadEvents();
+    await loadCoverImages();
     const saved = events.find((item) => item.id === eventId);
     if (saved) showCurrentImages(saved);
     if (!mainFile && galleryFiles.length === 0) setTimeout(() => { if (editor.hidden === false) closeEditor(); }, 700);
@@ -307,6 +386,7 @@ async function deleteEvent(event) {
     message($('#dashboard-message'), 'Evento eliminado.', 'ok');
     if (editingId === event.id) closeEditor();
     await loadEvents();
+    await loadCoverImages();
   } catch (error) {
     message($('#dashboard-message'), error.message, 'error');
   }

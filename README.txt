@@ -11,6 +11,8 @@ ARQUITECTURA
 - La clave service_role se usa únicamente en funciones del servidor.
 - Las imágenes aceptadas son JPG, PNG y WebP de hasta 3 MB. El panel reduce
   imágenes grandes antes de enviarlas.
+- Las fotos de portada se administran desde /chino (hasta 3, con orden manual)
+  y se guardan en el bucket gap-eventos de Supabase Storage.
 
 CONFIGURACIÓN INICIAL
 1. Crear un proyecto Supabase en el plan Free y elegir una región cercana

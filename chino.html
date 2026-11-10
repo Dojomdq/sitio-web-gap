@@ -21,6 +21,7 @@
     @media(max-width:600px){.password-dialog{padding:18px}}
   </style>
   <style>[hidden]{display:none!important}</style>
+  <style>.presentation-upload{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:12px;margin-top:20px}.presentation-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:14px}.presentation-card{min-width:0;padding:10px;background:#101010;border:1px solid var(--line)}.presentation-card>img{display:block;width:100%;height:190px;object-fit:cover;background:#222}.presentation-card>.help{display:block;margin-top:9px}.presentation-controls{display:flex;gap:7px;margin-top:10px}.presentation-controls .btn{min-height:38px;padding:8px 12px}.presentation-controls .btn.danger{margin-left:auto}.presentation-controls .btn:disabled{opacity:.35}@media(max-width:600px){.presentation-upload{grid-template-columns:1fr}.presentation-upload>.btn{width:100%}.presentation-list{grid-template-columns:1fr 1fr}.presentation-card>img{height:140px}.presentation-controls{gap:4px}.presentation-controls .btn{padding:7px 9px;font-size:10px}}</style>
 </head>
 <body>
   <header class="top wrap">
@@ -48,6 +49,17 @@
       <div class="toolbar"><span id="event-count" class="subtle">Eventos</span><label for="event-filter">Mostrar<select id="event-filter"><option value="all">Todos</option><option value="published">Publicados</option><option value="draft">Borradores</option><option value="hidden">Ocultos</option></select></label></div>
       <div id="dashboard-message" class="message" aria-live="polite"></div>
       <div id="event-list" class="event-list"><p class="empty-state">Cargando eventos…</p></div>
+
+      <section id="presentation-manager" class="editor" aria-labelledby="presentation-title">
+        <div class="editor-head"><div><h2 id="presentation-title">FOTOS DE PORTADA</h2><p class="subtle">Elegí hasta 3 fotos para la sección “En vivo” de la página principal.</p></div></div>
+        <form id="presentation-form" class="presentation-upload">
+          <div class="field"><label for="presentation-files">Agregar fotos</label><input id="presentation-files" type="file" accept="image/jpeg,image/png,image/webp" required><span class="help">JPG, PNG o WebP. Se optimizan al subirlas. Podés cambiarlas cuando quieras.</span></div>
+          <button id="presentation-upload-button" class="btn" type="submit">SUBIR FOTO</button>
+        </form>
+        <p id="presentation-message" class="message" aria-live="polite"></p>
+        <div id="presentation-count" class="help">Cargando fotos…</div>
+        <div id="presentation-list" class="presentation-list"></div>
+      </section>
 
       <section id="event-editor" class="editor" hidden aria-labelledby="editor-title">
         <div class="editor-head"><h2 id="editor-title">NUEVO EVENTO</h2><button id="close-editor" class="btn secondary" type="button">CERRAR</button></div>

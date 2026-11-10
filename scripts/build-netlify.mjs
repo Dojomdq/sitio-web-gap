@@ -14,7 +14,7 @@ await mkdir(output, { recursive: true });
 
 const publicFiles = [
   'index.html', 'agenda.html', 'evento.html', 'chino.html',
-  'agenda.js', 'agenda-page.js', 'evento-page.js', 'chino.js',
+  'agenda.js', 'agenda-page.js', 'evento-page.js', 'chino.js', 'presentation.js',
 ];
 for (const file of publicFiles) await copyFile(path.join(root, file), path.join(output, file));
 await cp(path.join(root, 'assets'), path.join(output, 'assets'), { recursive: true });
